@@ -104,7 +104,7 @@ app.get('/locations/Taoiseach/:Name', passport.authenticate('jwt', { session: fa
   Location.findOne({ 'Taoiseach.Name': req.params.Name })
     .then(function (taoiseach) {
       if (!taoiseach) {
-        res.status(404).send(req.params.Name + " Níl Taoiseach i gceanais ar an ceantar seo.");
+        res.status(404).send(req.params.Name + " Níl Taoiseach i gceanais ar an ceantar seo go fóil  .");
       } else {
         res.json(taoiseach.Taoiseach)
       }

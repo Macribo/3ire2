@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
-var movieSchema = mongoose.Schema ({
+var locationSchema = mongoose.Schema ({
   Title : {type: String, required: true},
   Description : {type: String, required: true},
-  Genre : {
+  Status : {
     Name : String,
     Description : String
   },
-  Director : {
+  Taoiseach : {
     Name : String,
     Bio : String,
     DOB: Date
@@ -32,8 +32,8 @@ userSchema.methods.validatePassword = function(password) {
 };
 
 
-var Movie = mongoose.model('Movie', movieSchema);
+var Location = mongoose.model('Location', locationSchema);
 var User = mongoose.model('User', userSchema);
 
-module.exports.Movie = Movie;
+module.exports.Location = Location;
 module.exports.User = User;
