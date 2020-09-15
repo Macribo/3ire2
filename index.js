@@ -1,4 +1,3 @@
-//original react and server architecture by Fatema Okahabi
 const path = require("path");
 const express = require('express');
 const app = express();
@@ -7,7 +6,6 @@ bodyParser = require('body-parser');
 uuid = require('uuid');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-// const Movies = Models.Movie;
 const Locations = Models.Location;
 const Users = Models.User;
 const passport = require('passport');
@@ -52,7 +50,7 @@ app.use(function (err, req, res, next) {
 
 //introductory message on opening API with no url endpoint specified
 app.get('/', function (req, res, next) {
-  res.send('Fáilte go Spinner!');
+  res.send('fáilte go comhéadan feidhmchlár  riomhchlárú 3ire2');
   next();
 });
 
@@ -249,7 +247,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 //Add location to User profile, prevents duplicates of the same location being added to the user profile.
-app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
+app.post('/users/:Username//:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
   if (req.user.Username === req.params.Username) {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
       $addToSet: { FavouriteMovies: req.params.MovieID }
