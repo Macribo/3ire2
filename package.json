@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/okabhaif/myFlix.git"
+    "url": "git+https://github.com/macribo/3ire2.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "authorship in development",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/okabhaif/myFlix/issues"
+    "url": "https://github.com/macribo/3ire2/issues"
   },
-  "homepage": "https://github.com/okabhaif/myFlix#readme",
+  "homepage": "167.172.184.73:1337",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
