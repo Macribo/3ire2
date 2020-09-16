@@ -13,7 +13,7 @@ require('./passport'); //local passport file
 const cors = require('cors');
 const { check, validationResult } = require('express-validator');
 
-mongoose.connect('mongodb://localhost:27017/spinnerDb', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/tofuDb', { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 // var allowedOrigins = ['http://localhost:8080', 'http://localhost:1234', 'https://spinner-project.herokuapp.com'];
 
@@ -247,10 +247,10 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
 });
 
 //Add location to User profile, prevents duplicates of the same location being added to the user profile.
-app.post('/users/:Username//:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
+app.post('/users/:Username//:LocationID', passport.authenticate('jwt', { session: false }), function (req, res) {
   if (req.user.Username === req.params.Username) {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
-      $addToSet: { FavouriteMovies: req.params.MovieID }
+      $addToSet: { FavouriteMovies: req.params.LocationID }
     },
       { new: true }, // This line makes sure that the updated document is returned
       function (err, updatedUser) {
@@ -267,11 +267,11 @@ app.post('/users/:Username//:MovieID', passport.authenticate('jwt', { session: f
   };
 });
 
-//deletes a county from user's developing list
-app.delete('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
+//deletes a county from user's AthainteI  list
+app.delete('/users/:Username/Locations/:LocationID', passport.authenticate('jwt', { session: false }), function (req, res) {
   if (req.user.Username === req.params.Username) {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
-      $pull: { ChampionOf: req.params.LocationID }
+      $pull: { AthainteI: req.params.LocationID }
     },
       { new: true }, // This line makes sure that the updated document is returned
       function (err, updatedUser) {

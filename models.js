@@ -22,7 +22,7 @@ var userSchema = mongoose.Schema ({
   Password : {type: String, required: true},
   Email : {type: String, required: true},
   DOB : Date,
-  FavouriteMovies : [{type: mongoose.Schema.Types.ObjectId, ref:'Movie'}]
+  AthainteI : [{type: mongoose.Schema.Types.ObjectId, ref:'Location'}]
 });
 userSchema.statics.hashPassword = function(password) {
   return bcrypt.hashSync(password, 10);
