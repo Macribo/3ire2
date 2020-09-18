@@ -1,0 +1,102 @@
+tofuDb = {
+
+    var locationSchema = mongoose.Schema ({
+    Title : {type: String, required: true},
+    Description : {type: String, required: true},
+    Status : {
+        Name : String,
+        Description : String
+    },
+    Taoiseach : {
+        Name : String,
+        Bio : String,
+        DOB: Date
+    },
+    ImagePath : String,
+    Featured : Boolean
+    });
+    const bcrypt = require('bcryptjs');
+
+    var userSchema = mongoose.Schema ({
+    Username : {type: String, required: true},
+    Password : {type: String, required: true},
+    Email : {type: String, required: true},
+    DOB : Date,
+    AthainteI : [{type: mongoose.Schema.Types.ObjectId, ref:'Location'}]
+    });
+
+
+
+
+}
+
+Baile
+/////////////////
+"fáilte..."
+
+tionscanamh nua
+tionscanamh reatha
+
+/////////////////
+tionscanamh nua
+/////////////////
+
+ f - g - g - O - O - O - O - O 
+ 
+ O - O - O - O - O - O - O - O
+
+ O - O - O - O - O - O - O - O 
+ 
+ O - O - O - O - O - O - O - O
+ 
+ O - O - O - O - O - O - O - O 
+ 
+ O - O - O - O - O - O - O - O 
+ 
+ O - O - O - O - O - O - O - O 
+ 
+ O - O - O - O - O - O - r - e 
+
+imir mar 
+
+f
+Feichid/roghachlár feicidí na hÉireann a haon/ iad ar fad / vicipeid / ainm logánta / feidhlim.anilida
+fáilte is fichi-dí!
+Tar isteach ní seasfar ort
+Lig do scíth.
+
+Má tosníonn tú tionscanamh mar feichad ar bith;
+ní feidir dul in iommíocht i gcomhair Taoiseachas*.
+Ní beidh aon duinne in ánn tú a ḟeicéal, go gcuireann tú tú féin in aithne.
+ 
+
+g
+Gael/ 
+    File 
+    Draoí/ bumbóg - lbh-0 gaeilge líofa ; dealg ; eitilt saibhir "radhairc na mbláth psychidelic location data view"
+    Breitheaṁ 
+    Bard | bailligh ar linkbox.io
+    Maoire 
+    Saighdiúr 
+    Dearthóir
+    Buachail Bó
+
+
+*Ach amháin mar ciaróg nó bumbóg
+
+"Tá tú..."
+dearg le fearg | líath le fía ? 
+
+
+
+g
+Gall/Galóglach +/ Lochlanach Eorpach Palistínach Craicfinder Freebooter Visitor iomlán & eile
+
+r 
+
+randamach
+roghachlár random roller -> ofortuna.
+
+
+
+
