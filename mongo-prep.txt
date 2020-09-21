@@ -1,0 +1,43 @@
+
+
+
+let location0 = {  Name:'Aċaḋ Eoċaille',
+Contae: 'Aontroma',
+Cuige:'Uladh'
+ImagePath: "test-bg-00.png"
+}
+
+
+let location3 = {  Name:'Carn Ṁéaḃla',
+Contae: 'Aontroma',
+Cuige:'Uladh'
+ImagePath: "test-bg-03.png"
+}
+
+
+let location4 = {  Name:'Carraig Ḟearġais',
+Contae: 'Aontroma',
+Cuige:'Uladh'
+ImagePath: "test-bg-04.png"
+}
+
+
+let location5 = {  Name:'Béal Feiriste',
+Contae: 'Aontroma',
+Cuige:'Uladh'
+ImagePath: "test-bg-05.png"
+}
+
+
+
+
+let countyDetails = {
+  antrim: [
+    'Co. Aontroma',
+    [
+      'Reaċlainn',
+      'Dearḃóg',
+      'Aċaḋ Eoċaille',
+      'Carn Ṁéaḃla',
+      'Carraig Ḟearġais',
+      'Béal Feiriste'

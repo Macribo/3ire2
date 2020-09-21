@@ -144,7 +144,8 @@ roghachlár random roller -> ofortuna.
 let location1 = {  Name:'Reaċlainn',
 Contae: 'Aontroma',
 Cuige:'Uladh'
-ImagePath: "test-bg-01.png"}
+ImagePath: "test-bg-01.png"
+}
 
 
 let countyDetails = {
