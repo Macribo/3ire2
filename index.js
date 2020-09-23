@@ -65,8 +65,8 @@ app.get("/log", passport.authenticate('jwt', { session: false }), function (req,
     });
 });
 
-//gets a specific location's information by searching its title name
-app.get('/locations/:Title', passport.authenticate('jwt', { session: false }), function (req, res) {
+//gets a specific location's information by searching it's county
+app.get('/locations/:Cuige', function (req, res) {
   Locations.findOne({ Title: req.params.Title })
     .then(function (location) {
       if (!location) {

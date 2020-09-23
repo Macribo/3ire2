@@ -1,35 +1,78 @@
 
-
-
 let location0 = {  Name:'Aċaḋ Eoċaille',
 Contae: 'Aontroma',
-Cuige:'Uladh'
+Cuige:'Uladh',
 ImagePath: "test-bg-00.png"
+
 }
 
 
 let location3 = {  Name:'Carn Ṁéaḃla',
 Contae: 'Aontroma',
-Cuige:'Uladh'
+Cuige:'Uladh',
 ImagePath: "test-bg-03.png"
 }
 
 
 let location4 = {  Name:'Carraig Ḟearġais',
 Contae: 'Aontroma',
-Cuige:'Uladh'
+Cuige:'Uladh',
 ImagePath: "test-bg-04.png"
 }
 
 
 let location5 = {  Name:'Béal Feiriste',
 Contae: 'Aontroma',
-Cuige:'Uladh'
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+let location6 = {  Name:'Sráid na nAlbanach',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+let location7 = {  Name:'Craigavon',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+let location8 = {  Name:'Port An Dúnáin',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+let location9 = {  Name:'Baile Úr ',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+let location10 = {  Name:'Baile an Ṁuilinn',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
+ImagePath: "test-bg-05.png"
+}
+
+
+let location11 = {  Name:'Lios Liath',
+Contae: 'Ard Ṁaċa',
+Cuige:'Uladh',
 ImagePath: "test-bg-05.png"
 }
 
 
 
+
+     'Sráid na nAlbanach',
+      'Craigavon',
+      'Port An Dúnáin',
+      'Baile Úr',
+      'Baile an Ṁuilinn',
+      'Lios Liath'
 
 let countyDetails = {
   antrim: [
@@ -41,3 +84,20 @@ let countyDetails = {
       'Carn Ṁéaḃla',
       'Carraig Ḟearġais',
       'Béal Feiriste'
+
+
+
+
+
+//users collection in tofuDb:
+
+let user0 = {  
+    email:'ribo@test.de',
+
+    charSheet: [{ 
+        name:'Ribulus',
+        path:'Rógaire',
+        avatar:'jester.png',
+        hp:1,
+    }]
+}

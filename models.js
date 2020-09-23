@@ -1,28 +1,21 @@
 const mongoose = require('mongoose');
 
 var locationSchema = mongoose.Schema ({
-  Title : {type: String, required: true},
-  Description : {type: String, required: true},
-  Status : {
-    Name : String,
-    Description : String
-  },
-  Taoiseach : {
-    Name : String,
-    Bio : String,
-    DOB: Date
-  },
+  Name : {type: String, required: true},
+  Contae : {type: String, required: true},
+  Cuige : {type: String, required: true},
   ImagePath : String,
-  Featured : Boolean
 });
 const bcrypt = require('bcryptjs');
 
 var userSchema = mongoose.Schema ({
-  Username : {type: String, required: true},
+  Ainm:{type: String, required: true},
   Password : {type: String, required: true},
   Email : {type: String, required: true},
-  DOB : Date,
-  AthainteI : [{type: mongoose.Schema.Types.ObjectId, ref:'Location'}]
+  Characters : [{
+    ainm:String,
+    class:String,	
+  }]
 });
 userSchema.statics.hashPassword = function(password) {
   return bcrypt.hashSync(password, 10);
