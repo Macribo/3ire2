@@ -65,7 +65,8 @@ app.get("/log", passport.authenticate('jwt', { session: false }), function (req,
     });
 });
 
-//gets a specific location's information by searching it's county
+//get locations by province
+
 app.get('/locations/:Cuige', function (req, res) {
   Locations.findOne({ Title: req.params.Title })
     .then(function (location) {
@@ -80,7 +81,11 @@ app.get('/locations/:Cuige', function (req, res) {
       res.status(500).send("Error: " + err);
     });
 });
-//gets an update of location's status. descripton by searching a genre name
+// app.get('/users', (req, res) => {
+//   Users.find().then(users => res.json(users));
+// });
+
+//gets an update of location's activities by searching a name
 //https://docs.mongodb.com/manual/tutorial/query-embedded-documents/
 app.get('/locations/status/:Name', passport.authenticate('jwt', { session: false }), function (req, res) {
   Locations.findOne({ 'Status.Name': req.params.Name })
@@ -143,11 +148,9 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), fu
 });
 
 //add new user - required fields = username, password, email and Birthday
-app.post('/users',
-  [check('Username', 'Username requires at least 8 characters.').isLength({ min: 8 }),
-  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
-  check('Password', 'Password is required').not().isEmpty(),
-  check('Email', 'Email does not appear to be valid').isEmail()],
+app.post('/users',[
+  check('Password', 'Cogar.').not().isEmpty(),
+  check('Email', 'r-post @ i gceart?').isEmail()],
   function (req, res) {
     // check the validation object for errors
     var errors = validationResult(req);
@@ -155,17 +158,16 @@ app.post('/users',
       return res.status(422).json({ errors: errors.array() });
     }
     var hashedPassword = Users.hashPassword(req.body.Password);
-    Users.findOne({ Username: req.body.Username })
+    Users.findOne({ Ainm: req.body.Ainm })
       .then(function (user) {
         if (user) {
-          return res.status(400).send(req.body.Username + "already exists");
+          return res.status(400).send(req.body.Ainm + "Tá an tainm sin in úsáid theanna féin.");
         } else {
           Users
             .create({
-              Username: req.body.Username,
+              Ainm: req.body.Ainm,
               Password: hashedPassword,
-              Email: req.body.Email,
-              DOB: req.body.DOB
+              Email: req.body.Email
             })
             .then(function (user) { res.status(201).json(user) })
             .catch(function (error) {
@@ -180,22 +182,21 @@ app.post('/users',
   });
 
 //allows user to update their information
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
+app.put('/users/:Ainm', passport.authenticate('jwt', { session: false }),
 
   function (req, res) {
-    if (req.user.Username === req.params.Username) {
-      Users.findOne({ Username: req.params.Username })
+    if (req.user.Username === req.params.Ainm) {
+      Users.findOne({ Username: req.params.Ainm })
         .then(function (user) {
           if (!user) {
 
-            res.status(404).send("níor aimsíodh" + req.params.Username);
+            res.status(404).send("níor aimsíodh" + req.params.Ainm);
           }
           else {
             const updatedUser = {
-              Username: req.body.Username || user.Username,
+              Ainm: req.body.Ainm || user.Ainm,
               Password: req.body.Password ? Users.hashPassword(req.body.Password) : user.Password,
               Email: req.body.Email || user.Email,
-              DOB: req.body.DOB || user.DOB
             }
 
             console.log(updatedUser)
@@ -221,19 +222,19 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }),
         });
     }
     else {
-      return res.status(403).send(req.params.Username + " Ní feidir.");
+      return res.status(403).send(req.params.Ainm + " Ní feidir.");
     };
   });
 
 //delete existing user (deregistration)
-app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), function (req, res) {
-  if (req.user.Username === req.params.Username) {
-    Users.findOneAndRemove({ Username: req.params.Username })
+app.delete('/users/:Ainm', passport.authenticate('jwt', { session: false }), function (req, res) {
+  if (req.user.Ainm === req.params.Ainm) {
+    Users.findOneAndRemove({ Ainm: req.params.Ainm })
       .then(function (user) {
         if (!user) {
-          res.status(404).send("Níor aimsíodh "+req.params.Username );
+          res.status(404).send("Níor aimsíodh "+req.params.Ainm );
         } else {
-          res.status(200).send(req.params.Username + "bainnte.");
+          res.status(200).send(req.params.Ainm + "bainnte.");
         }
       })
       .catch(function (err) {
@@ -242,14 +243,14 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
       });
   }
   else {
-    return res.status(403).send(req.params.Username + " Ní feidir.");
+    return res.status(403).send(req.params.Ainm + " Ní feidir.");
   };
 });
 
 //Add location to User profile, prevents duplicates of the same location being added to the user profile.
 app.post('/users/:Username//:LocationID', passport.authenticate('jwt', { session: false }), function (req, res) {
-  if (req.user.Username === req.params.Username) {
-    Users.findOneAndUpdate({ Username: req.params.Username }, {
+  if (req.user.Ainm === req.params.Ainm) {
+    Users.findOneAndUpdate({ Ainm: req.params.Ainm }, {
       $addToSet: { FavouriteMovies: req.params.LocationID }
     },
       { new: true }, // This line makes sure that the updated document is returned
@@ -263,32 +264,9 @@ app.post('/users/:Username//:LocationID', passport.authenticate('jwt', { session
       })
   }
   else {
-    return res.status(403).send(req.params.Username + "Ní feidir.");
+    return res.status(403).send(req.params.Ainm + "Ní feidir.");
   };
 });
-
-//deletes a county from user's AthainteI  list
-app.delete('/users/:Username/Locations/:LocationID', passport.authenticate('jwt', { session: false }), function (req, res) {
-  if (req.user.Username === req.params.Username) {
-    Users.findOneAndUpdate({ Username: req.params.Username }, {
-      $pull: { AthainteI: req.params.LocationID }
-    },
-      { new: true }, // This line makes sure that the updated document is returned
-      function (err, updatedUser) {
-        if (err) {
-          console.error(err);
-          res.status(500).send("Error: " + err);
-        } else {
-          return res.status(200).json(updatedUser)
-        }
-      })
-  }
-  else {
-    return res.status(403).send(req.params.Username + " Ní feidir");
-  };
-});
-
-//documentation
 
 
 var port = process.env.PORT || 3000;
